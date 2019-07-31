@@ -24,4 +24,10 @@ public class HelloController {
         return "success";
 
     }
+
+//    @RequestMapping("/")
+//    public String index(){
+//
+//        return "index";
+//    }
 }
