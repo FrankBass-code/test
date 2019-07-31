@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBootHelloworldApplication {
 
 	public static void main(String[] args) {
-		//asdasd
+
 		SpringApplication.run(SpringBootHelloworldApplication.class, args);
 	}
 
