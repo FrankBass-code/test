@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collection;
@@ -44,6 +45,15 @@ public class EmployeeController {
         employeeDao.save(employee);
         System.out.println("保存的员工信息"+employee);
         return "redirect:/emps";
+    }
+    @GetMapping("/emp/{id}")
+    public String toEditPage(@PathVariable("id") Integer id ,Model model){
+        Employee employee = employeeDao.get(id);
+        model.addAttribute("emp",employee);
+        Collection<Department> departments = departmentDao.getDepartments();
+        model.addAttribute("depts",departments);
+        return "emp/add";
+
     }
 
 }
