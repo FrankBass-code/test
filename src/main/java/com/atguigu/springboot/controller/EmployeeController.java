@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -37,6 +38,12 @@ public class EmployeeController {
         return "emp/add";
 
     }
-
+    //
+    @PostMapping("/emp")
+    public String addEmp(Employee employee){
+        employeeDao.save(employee);
+        System.out.println("保存的员工信息"+employee);
+        return "redirect:/emps";
+    }
 
 }
