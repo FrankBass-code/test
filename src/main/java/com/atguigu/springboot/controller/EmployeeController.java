@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -54,6 +55,13 @@ public class EmployeeController {
         model.addAttribute("depts",departments);
         return "emp/add";
 
+    }
+
+    @PutMapping("/emp")
+    public String updateEmployee(Employee employee){
+        System.out.println("修改的员工信息"+employee);
+        employeeDao.save(employee);
+        return "redirect:/emps";
     }
 
 }

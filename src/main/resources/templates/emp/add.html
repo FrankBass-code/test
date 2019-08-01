@@ -10,11 +10,11 @@
 
 		<title>Dashboard Template for Bootstrap</title>
 		<!-- Bootstrap core CSS -->
-		<link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}" rel="stylesheet">
+		<link href="asserts/css/bootstrap.min.css" th:href="@{/static/webjars/bootstrap/4.3.1/css/bootstrap.css}" rel="stylesheet">
 
 		<!-- Custom styles for this template -->
-		<link href="asserts/css/dashboard.css" th:href="@{asserts/css/dashboard.css}" rel="stylesheet">
-		<style type="text/css">
+		<link href="asserts/css/dashboard.css" th:href="@{/static/asserts/css/dashboard.css}" rel="stylesheet">
+		<style type="text/css" >
 			/* Chart.js */
 
 			@-webkit-keyframes chartjs-render-animation {
@@ -61,6 +61,10 @@
 				<div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<form th:action="@{/emp}" method="post">
+
+
+					<input type="hidden" name="_method" value="put" th:if="${emp!=null}"/>
+						<input type="hidden" name="id"  th:if="${emp!=null}"  th:value="${emp.id}"/>
 						<div class="form-group">
 							<label >LastName</label>
 							<input name="lastName" type="text" class="form-control"  placeholder="zhangsan" th:value="${emp!=null}?${emp.lastName}">
@@ -93,7 +97,7 @@
 							<input name="birth" type="text" class="form-control" placeholder="zhangsan" th:value="${emp!=null}?${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}">
 							<!--<input name="birth" type="text" class="form-control"  placeholder="zhangsan"  th:value="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}>-->
 						</div>
-						<button type="submit" class="btn btn-primary">添加</button>
+						<button type="submit" class="btn btn-primary" th:text="${emp!=null?'修改':'添加'}">添加</button>
 					</form>
 				</main>
 			</div>
