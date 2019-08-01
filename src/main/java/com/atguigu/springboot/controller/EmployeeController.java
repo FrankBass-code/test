@@ -1,6 +1,8 @@
 package com.atguigu.springboot.controller;
 
+import com.atguigu.springboot.dao.DepartmentDao;
 import com.atguigu.springboot.dao.EmployeeDao;
+import com.atguigu.springboot.entities.Department;
 import com.atguigu.springboot.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,10 @@ public class EmployeeController {
     @Autowired
     EmployeeDao employeeDao;
     //查询员工列表
+
+    @Autowired
+    DepartmentDao departmentDao;
+
     @GetMapping("/emps")
     public String list(Model model){
         Collection<Employee> employees = employeeDao.getAll();
@@ -23,4 +29,14 @@ public class EmployeeController {
         return "emp/list";
 
     }
+
+    @GetMapping("/emp")
+    public String toAddPage(Model model){
+        Collection<Department> departments = departmentDao.getDepartments();
+        model.addAttribute("depts",departments);
+        return "emp/add";
+
+    }
+
+
 }
