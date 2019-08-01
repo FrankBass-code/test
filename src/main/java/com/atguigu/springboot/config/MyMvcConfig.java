@@ -37,7 +37,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                        .excludePathPatterns("/index.html","/","/user/login","/static/**","/resoureces/**","/public/**","/asserts/**");
+                        .excludePathPatterns("/hello/**","/index.html","/","/user/login","/static/**","/resoureces/**","/public/**","/asserts/**");
             }
         };
         return adapter;
